@@ -1,24 +1,36 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import Button from '@mui/material/Button';
 
 function App() {
 
   const [text, setText] = useState('');
+  const [result, setResult] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(text);
+    const textObj = { title : text }
 
-    axios.post('http://127.0.0.1:5000/post')
-    
+    axios('http://127.0.0.1:5000/', {
+      method: 'POST',
+      data: textObj,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((res) => setResult(res.data))
   }
 
   return (
     <div className="flex flex-col h-screen">
-        <h1 className="p-2 m-2 flex flex-col align-center justify-center text-3xl font-bold mx-auto">How are you feeling today?</h1>
-        <form onSubmit={handleSubmit} className="p-2 m-2 flex flex-col h-3/4 align-center justify-center text-xl">
-          <input type="text" value={text} onChange={(e)=> { setText(e.target.value)}} className="border-2 border-black" placeholder="" />
-          <button>Send</button>
-        </form>
+      <h1 className="p-2 m-2 align-center justify-center text-3xl font-bold">How are you feeling today?</h1>
+      <form onSubmit={handleSubmit} className="p-2 m-2 flex flex-col h-3/4 align-center border-2 w-1/2 justify-center text-xl">
+        <input type="text" value={text} onChange={(e) => { setText(e.target.value) }} className="border-2 border-black" placeholder="" />
+        <Button>Send</Button>
+      </form>
+      {
+        
+      }
     </div>
   )
 }
