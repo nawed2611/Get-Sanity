@@ -1,5 +1,6 @@
 from tracemalloc import reset_peak
 from flask import Flask
+import json
 import paralleldots
 
 
@@ -14,10 +15,11 @@ def home():
 
 
     # for single sentence
-    text="Come on, lets play together"
+    text="you are a motherfucker"
     lang_code="en"
     response=paralleldots.sentiment(text,lang_code)
-
+    # data = json.loads(response)
+    # print(type(data))
     return response
 
 
