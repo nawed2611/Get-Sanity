@@ -12,7 +12,7 @@ function App() {
     console.log(text);
     const textObj = { title : text }
 
-    axios('http://127.0.0.1:5000/', {
+    axios('http://192.168.0.128:80 ', {
       method: 'POST',
       data: textObj,
       headers: {
