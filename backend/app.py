@@ -7,12 +7,12 @@ app = Flask(__name__)
 paralleldots.set_api_key("bwQrWhxsrnOZS57WuO93Ohowv6giQt7EPBTwOhtm2BI")
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=["POST", "GET"])
 def home():
     if request.method == 'POST':
 
         # for single sentence
-        text = request.form.get('title')
+        text = request.json['title']
         lang_code = "en"
         response = paralleldots.sentiment(text, lang_code)
 
