@@ -1,5 +1,5 @@
 from tracemalloc import reset_peak
-from flask import Flask, request
+from flask import Flask, request, render_template
 import paralleldots
 
 app = Flask(__name__)
@@ -7,9 +7,8 @@ app = Flask(__name__)
 paralleldots.set_api_key("bwQrWhxsrnOZS57WuO93Ohowv6giQt7EPBTwOhtm2BI")
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-
     if request.method == 'POST':
 
         # for single sentence
@@ -24,7 +23,8 @@ def home():
         mood_type = max(modified_response, key=lambda x: modified_response[x])
 
         return mood_type
-
+    else:
+        return "Hello World"
 
 
 app.run(debug=True, host='0.0.0.0', port=80)
