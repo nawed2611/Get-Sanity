@@ -1,18 +1,21 @@
 from tracemalloc import reset_peak
 from flask import Flask, request, render_template
 import paralleldots
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 paralleldots.set_api_key("bwQrWhxsrnOZS57WuO93Ohowv6giQt7EPBTwOhtm2BI")
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=["POST", "GET"])
+@cross_origin(supports_credentials=True)
 def home():
     if request.method == 'POST':
 
         # for single sentence
-        text = request.form.get('title')
+        text = request.json['title']
         lang_code = "en"
         response = paralleldots.sentiment(text, lang_code)
 
