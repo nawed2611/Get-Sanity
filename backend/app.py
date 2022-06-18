@@ -15,9 +15,9 @@ def home():
     if request.method == 'POST':
 
         # for single sentence
-        text = request.json['title']
+        text = request.json
         lang_code = "en"
-        response = paralleldots.sentiment(text, lang_code)
+        response = paralleldots.sentiment(text["title"], lang_code)
 
         # converting nested dictionary to simple dictionary
         modified_response = response['sentiment']
