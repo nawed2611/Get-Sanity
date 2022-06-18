@@ -22,9 +22,11 @@ def home():
         # finding max value from positive, negative, neutral
         mood_type = max(modified_response, key=lambda x: modified_response[x])
 
-        return mood_type
+        return { "mood" : mood_type}
     else:
-        return "Hello World"
+        return {
+            "mood" : "no response"
+            }
 
 
-app.run(debug=True, host='0.0.0.0', port=80)
+app.run(debug=True)
