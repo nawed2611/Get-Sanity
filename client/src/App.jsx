@@ -5,16 +5,19 @@ import Button from '@mui/material/Button';
 function App() {
 
   const [text, setText] = useState('');
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(text);
-    const textObj = { title : text }
+    console.log(e);
+    const textObj = 
 
-    axios('http://192.168.0.128:80 ', {
+    axios('http://127.0.0.1:5000 ', {
       method: 'POST',
-      data: textObj,
+      headers: {
+          'Content-type': "application/json"
+      },
+      data: { "title" : text },
     }).then((res) => setResult(res.data))
   }
 
@@ -26,7 +29,7 @@ function App() {
         <Button>Send</Button>
       </form>
       {
-        
+        result && <h1>{result["mood"]}</h1>
       }
     </div>
   )
