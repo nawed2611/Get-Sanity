@@ -14,8 +14,9 @@ paralleldots.set_api_key("bwQrWhxsrnOZS57WuO93Ohowv6giQt7EPBTwOhtm2BI")
 def home():
     if request.method == 'POST':
 
-        # for single sentence
         text = request.json
+
+        # for single sentence
         lang_code = "en"
         response = paralleldots.sentiment(text["title"], lang_code)
 
@@ -25,11 +26,9 @@ def home():
         # finding max value from positive, negative, neutral
         mood_type = max(modified_response, key=lambda x: modified_response[x])
 
-        return { "mood" : mood_type }
+        return {"mood": mood_type}
     else:
-        return {
-            "mood" : "no response"
-            }
+        return {"mood": "no response"}
 
 
 app.run(debug=True)
