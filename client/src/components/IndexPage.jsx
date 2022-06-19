@@ -26,7 +26,7 @@ const IndexPage = () => {
       </Box>
       <div className="m-2 p-2 flex flex-col">
         <div className="flex flex-col items-center justify-center homediv">
-          <Typography variant="h1" className="font-bold text-4xl">Welcome to Sanity</Typography>
+          <Typography variant="h1" className="font-bold text-4xl">Welcome to GetSanity</Typography>
           <Typography variant="subtitle1" className="font-bold text-4xl">Holistic Mental Health Diagnosing Platform</Typography>
         </div>
       </div>
