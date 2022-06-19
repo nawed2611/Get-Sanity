@@ -4,4 +4,8 @@
 
 .homediv{
     height: 70vh;
+    color: rgb(41, 44, 59);
+}
+body{
+    /* background-color: rgba(128, 146, 160, 0.692); */
 }
