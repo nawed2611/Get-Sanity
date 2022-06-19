@@ -59,5 +59,4 @@ def model():
             return {"mood2": "Depression"}
 
 
-
 app.run(debug=True)

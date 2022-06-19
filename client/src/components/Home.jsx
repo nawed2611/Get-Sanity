@@ -43,7 +43,7 @@ const Home = () => {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-              MPeace
+              Insight Therapy
             </Typography>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <button onClick={handleOpen}>Chat with Marv</button>
