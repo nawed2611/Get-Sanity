@@ -34,23 +34,29 @@ def home():
         return {"mood": "no response"}
 
 
-@app.route('/survey')
+@app.route('/survey', methods=["POST"])
 def model():
-    pickled_model = pickle.load(open("//Users//arshad//Desktop//Projects//mlh-mental-health-hacks//model//knn_model.pkl", 'rb'))
-    temp = pickled_model.predict([[0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0]])
-    next = list(temp)
-    answer = str(next[0])
+    if request.method == 'POST':
 
-    if answer == '0':
-        return 'Normal'
-    elif answer == '1':
-        return 'Loneliness'
-    elif answer == '2':
-        return 'Anxiety'
-    elif answer == '3':
-        return 'Stress'
-    elif answer == '4':
-        return "Depression"
+        text2 = request.json
+        print(text2)
+        
+        pickled_model = pickle.load(open("//Users//arshad//Desktop//Projects//mlh-mental-health-hacks//model//knn_model.pkl", 'rb'))
+        temp = pickled_model.predict([[ text2["1"], text2["2"], text2["3"], text2["4"], text2["5"], text2["6"], text2["7"], text2["8"], text2["9"], text2["10"], text2["11"], text2["12"], text2["13"], text2["14"], text2["15"], text2["16"], text2["17"] ]])
+        next = list(temp)
+        answer = str(next[0])
 
+        if answer == '0':
+            return {"mood2": 'Normal'}
+        elif answer == '1':
+            return {"mood2": 'Loneliness'}
+        elif answer == '2':
+            return {"mood2": 'Anxiety'}
+        elif answer == '3':
+            return {"mood2": 'Stress'}
+        elif answer == '4':
+            return {"mood2": "Depression"}
+        else: 
+            return {"mood2": text2}
 
 app.run(debug=True)
