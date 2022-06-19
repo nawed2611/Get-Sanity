@@ -40,9 +40,10 @@ def model():
 
         text2 = request.json
         print(text2)
-        
+
+        # change path acc to your system
         pickled_model = pickle.load(open("//Users//arshad//Desktop//Projects//mlh-mental-health-hacks//model//knn_model.pkl", 'rb'))
-        temp = pickled_model.predict([[ text2["1"], text2["2"], text2["3"], text2["4"], text2["5"], text2["6"], text2["7"], text2["8"], text2["9"], text2["10"], text2["11"], text2["12"], text2["13"], text2["14"], text2["15"], text2["16"], text2["17"] ]])
+        temp = pickled_model.predict([[int(text2["1"]), int(text2["2"]), int(text2["3"]), int(text2["4"]), int(text2["5"]), int(text2["6"]), int(text2["7"]), int(text2["8"]), int(text2["9"]), int(text2["10"]), int(text2["11"]), int(text2["12"]), int(text2["13"]), int(text2["14"]), int(text2["15"]), int(text2["16"]), int(text2["17"])]])
         next = list(temp)
         answer = str(next[0])
 
@@ -56,7 +57,7 @@ def model():
             return {"mood2": 'Stress'}
         elif answer == '4':
             return {"mood2": "Depression"}
-        else: 
-            return {"mood2": text2}
+
+
 
 app.run(debug=True)
