@@ -15,6 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import SpotifyPlaylist from './SpotifyPlaylist';
 import Form from './Form';
 import Chat from './Chat';
+import News from './News';
 
 const Home = () => {
   const { logout } = useAuth0();
@@ -28,13 +29,13 @@ const Home = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-      axios('http://127.0.0.1:5000 ', {
-        method: 'POST',
-        headers: {
-          'Content-type': "application/json"
-        },
-        data: { "title": text },
-      }).then((res) => setResult(res.data))
+    axios('http://127.0.0.1:5000 ', {
+      method: 'POST',
+      headers: {
+        'Content-type': "application/json"
+      },
+      data: { "title": text },
+    }).then((res) => setResult(res.data))
   }
 
   return (
@@ -43,20 +44,18 @@ const Home = () => {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-              Insight Therapy
+              GetSanity
             </Typography>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <button onClick={handleOpen}>Chat with Marv</button>
             </Typography>
-            
+
             <Chat open={open} setOpen={setOpen} />
 
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              GitHub
+              <a href="https://github.com/nawed2611/mlh-mental-health-hacks">GitHub</a>
             </Typography>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Video
-            </Typography>
+      
             {isAuthenticated && (
               <Stack className="w-10" direction="row" spacing={2}>
                 <Avatar src={user.picture} />
@@ -73,10 +72,16 @@ const Home = () => {
           <Input type="text" value={text} onChange={(e) => { setText(e.target.value) }} className="font-bold text-4xl m-2 p-2 w-full h-1/2" placeholder="Like how was your day..." />
         </form>
       </div>
-      {result && <Typography className="flex items-center justify-center h-40" variant="h3">Scroll Down !!</Typography>}
+      {result && <Typography className="m-2 p-2 flex items-center justify-center h-40" variant="h3">Scroll Down, We have something for you ↓↓</Typography>}
       {
         result && result["mood"] == 'positive' && (
-          <SpotifyPlaylist />
+          <div className="m-2 p-2 flex flex-col items-center justify-center">
+            <SpotifyPlaylist />
+            <Typography className="" variant="h2" component="div" sx={{ flexGrow: 1 }}>
+              Also, Some Top Headlines from India to keep you updated
+            </Typography>
+            <News />
+          </div>
         )
       }
       {

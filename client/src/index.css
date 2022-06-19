@@ -2,10 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body{
+ background-color: #e3e1ed;
+}
 .homediv{
     height: 70vh;
     color: rgb(41, 44, 59);
 }
-body{
-    /* background-color: rgba(128, 146, 160, 0.692); */
+.newsitem{
+    display: flex;
+    width: 30%;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+.newslist{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    padding: 1rem;
+}
+
+.card{
+    background-color: rgba(233, 206, 235, 0.5);
+    padding: 2rem;
+    min-height: 40vh;
 }

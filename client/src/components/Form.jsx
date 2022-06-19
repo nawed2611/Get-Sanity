@@ -62,8 +62,9 @@ const Form = () => {
 
     return (
         <Container>
-            <form onSubmit={handleSubmit} className='font-bold flex flex-col items-center justify-center'>
-                <Typography variant="h4">Well, tell me more about it, Maybe I can help</Typography>
+            <form onSubmit={handleSubmit} className='m-2 p-2 font-bold flex flex-col items-center justify-center'>
+                <Typography className="m-2 p-2" variant="h4">Well, tell me more about it, Maybe we can help</Typography>
+                <Typography className="m-2 p-2" variant="h4">Write "1" for "Yes" and "2" for "No"</Typography>
                 <label>1. Are you feeling nervous?</label><Input value={one} onChange={(e)=> setOne(e.target.value) } type="number" className="font-bold number-4xl m-2 p-2 w-1/2 h-1/2" placeholder="" />
                 <label>2. Do you panic even in relatively simpler situations?</label><Input value={two} onChange={(e)=> setTwo(e.target.value) } type="number" className="font-bold number-4xl m-2 p-2 w-1/2 h-1/2" placeholder="" />
                 <label>3. Do you have trouble in concentration or have a smaller attention span?
@@ -84,7 +85,17 @@ const Form = () => {
                 <label>17. Do you have the habit of blaming yourself for anything that goes wrong around you?</label><Input value={seventeen} onChange={(e)=> setSeventeen(e.target.value) } type="number" className="font-bold number-4xl m-2 p-2 w-1/2 h-1/2" placeholder="" />
                 <button>Send</button>
             </form>
-            {result2 && <h1>{result2["mood2"]}</h1>}
+            {result2 && (
+            <Container className="m-2 p-2 flex flex-col items-center justify-center"> 
+
+                <Typography variant="h2">We are sad to hear that</Typography>
+                <Typography variant="h2">Your Mood is currently in - {result2["mood2"]}</Typography>
+                <Typography variant="h3">Here are some NGOs that might help - {result2["mood2"]}</Typography>
+
+                <a href="https://sangath.in/"><Typography variant="h5">Sangath</Typography></a>
+                <a href="https://www.mitramfoundation.org/"><Typography variant="h5">Mitram Foundation</Typography></a>
+                <a href="https://www.vandrevalafoundation.com/"><Typography variant="h5">Vandrevala Foundation</Typography></a>
+            </Container>)}
         </ Container>
     )
 }
