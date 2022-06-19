@@ -1,37 +1,17 @@
-import { useState } from 'react';
-import axios from 'axios';
-import Button from '@mui/material/Button';
+import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import IndexPage from './components/IndexPage';
+import Home from './components/Home';
 
 function App() {
 
-  const [text, setText] = useState('');
-  const [result, setResult] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e);
-    const textObj = 
-
-    axios('http://127.0.0.1:5000 ', {
-      method: 'POST',
-      headers: {
-          'Content-type': "application/json"
-      },
-      data: { "title" : text },
-    }).then((res) => setResult(res.data))
-  }
-
   return (
-    <div className="flex flex-col h-screen">
-      <h1 className="p-2 m-2 align-center justify-center text-3xl font-bold">How are you feeling today?</h1>
-      <form onSubmit={handleSubmit} className="p-2 m-2 flex flex-col h-3/4 align-center border-2 w-1/2 justify-center text-xl">
-        <input type="text" value={text} onChange={(e) => { setText(e.target.value) }} className="border-2 border-black" placeholder="" />
-        <Button>Send</Button>
-      </form>
-      {
-        result && <h1>{result["mood"]}</h1>
-      }
-    </div>
+    <Router>
+     <Routes>
+          <Route path="/" element={<IndexPage />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+    </Router>
   )
 }
 
