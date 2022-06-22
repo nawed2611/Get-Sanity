@@ -1,7 +1,7 @@
 <h1 align="center">Get Sanity</h1>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/83456083/174928173-b7dbf685-62b8-40ea-874b-3c95e3e76238.png" />
+  <img src="https://user-images.githubusercontent.com/83456083/175123357-13e7bfcc-fd7a-4a16-8a99-4796c8148eaf.png" />
 </p>
 
 ## Introduction
