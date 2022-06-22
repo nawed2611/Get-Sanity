@@ -21,7 +21,7 @@
 2. Install required packages
 3. Switch to the backend directory and install required packages through pip
   ```
-    cd backend && pip install
+    cd backend && pip install -r requirements.txt
    ```
 4. Switch to the frotend repository and install required packages through npm
    ```
