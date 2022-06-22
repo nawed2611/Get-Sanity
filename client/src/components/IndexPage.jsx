@@ -1,34 +1,40 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { useAuth0 } from "@auth0/auth0-react";
+import Paper from '@mui/material/Paper';
+
+import Navbar from './Navbar';
 
 
 const IndexPage = () => {
 
-  const { loginWithRedirect } = useAuth0();
-
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-              GetSanity
-            </Typography>
-            
-            <Button onClick={() => loginWithRedirect()} color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <div className="m-2 p-2 flex flex-col">
-        <div className="flex flex-col items-center justify-center homediv">
-          <Typography variant="h1" className="font-bold text-4xl">Welcome to GetSanity</Typography>
-          <Typography variant="subtitle1" className="font-bold text-4xl">Holistic Mental Health Diagnosing Platform</Typography>
+      
+      <Navbar />
+
+      <div className="m-2 p-2 flex w-1/2">
+        <div className="flex flex-col items-center p-2 m-2 justify-center homediv">
+          <Typography variant="h1" className="p-2 m-2 font-bold text-4xl">Welcome To GetSanity</Typography>
+          <Typography variant="h6" className="font-bold text-4xl">Holistic Mental Health Diagnosing Platform</Typography>
+          <div className='flex flex-col items-center justify-center'>
+            <Typography variant="h6" className="font-bold text-4xl">Login to Continue</Typography>
+          </div>
         </div>
+        <Box
+          sx={{
+            display: 'flex',
+            '& > :not(style)': {
+              m: 1,
+              width: 700,
+              height: 450,
+              margin: 5,
+              padding: 2,
+            },
+          }}
+        >
+          <Paper className="m-1 p-1 homelogo" variant="outlined" />
+        </Box>
       </div>
     </div>
   )
