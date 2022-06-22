@@ -7,9 +7,11 @@
 ## Introduction
 GetSanity is an app that allows a user to tell about their day and detects in which mood they are in. It also helps to detect users who might be suffering due to some mental illness and guides them. This app is built with React and Flask backend with integration of Kommprehend's API and a KNN Machine Learning model
 
+This app was built as a project during [Mental Health HacksII](https://mentalhealthhacksii.devpost.com/) by MLH
+
 ## Folder Structure
 1. This app follows a mono-repo structure i.e, Front-End and Back-End is hosted on the same repository
-2.  It uses Tailwind CSS, Material UI for building the client side of the project
+2. It uses Tailwind CSS, Material UI for building the client side of the project
 3. The App uses Auth0 login method to keep it secure
 
 ## How to run this app
